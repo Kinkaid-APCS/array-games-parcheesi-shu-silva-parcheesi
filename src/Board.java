@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Board
 {
 
@@ -13,6 +15,8 @@ public class Board
 
     private Space[] mainLoop;
     private Space[][] safePaths; // see note, below.
+
+    private int[] safeSpaces = {0, 7, 12, 17, 24, 29, 34, 41, 46, 51, 58, 63};
     private int[] numChipsInStartingPointsPerPlayer = {4,4,4,4};
     private int[] numChipsInHomePerPlayer = {0,0,0,0};
 
@@ -27,10 +31,30 @@ public class Board
             safePaths[3] = new Space[6];
         // ------------------------------
         // TODO: initialize all these spaces in both the main loop and the safe paths. Make sure you set the appropriate squares to safe!
-
+        for (int i = 0; i < mainLoop.length; i ++){
+            mainLoop[i] = new Space();
+            for (int j = 0; i < safeSpaces.length; i ++){
+                if (safeSpaces[j] == i){
+                    mainLoop[i].setSafe(true);
+                }
+            }
+        }
+        for (int i = 0; i < safePaths.length; i ++){
+            for (int j = 0; i < safePaths[i].length; i ++){
+                safePaths[i][j].setSafe(true);
+            }
+        }
 
         // ------------------------------
 
+    }
+
+    public void movePlaces(int startPos, int endPos){
+        checkSafePath(endPos);
+    }
+
+    public int checkSafePath(int position){
+        return 0;
     }
 
     public String toString()
