@@ -6,6 +6,7 @@ public class Space
      * cannot share a space. Some spaces are considered "safe" - these show up with an asterisk next to them in our game.
      * They correspond to the spaces with circles on them and the home rows on the original board game.
      */
+    //this is a comment
 
     private int whoIsHere; // which player, if any has pieces on this space.
     private int numPieces; // how many pieces, {0, 1, or 2} are on this space
