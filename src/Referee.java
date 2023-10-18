@@ -9,11 +9,11 @@ public class Referee
         System.out.println(myBoard);
     }
 
-    public int rollDice() {
-        final String[] roll_dice = {"1", "2", "3", "4", "5", "6"};
-        Random random = new Random();
-        int index = random.nextInt(roll_dice.length);
-        System.out.println(roll_dice[index]);
+    public static int[] pickNRandom(int[] array, int n) {
+        int[] rollDice = {1, 2, 3, 4, 5, 6};
+        int[] randomRolls = pickNRandom(rollDice,2);
+        return randomRolls;
+
     }
 
     public void playGame()
