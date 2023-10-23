@@ -7,6 +7,11 @@ public class ParchessiRunner
         if (testingMode)
         {
             System.out.println("Start tests");
+            for (int i  = 0; i < 50; i ++) {
+                System.out.println(Referee.pickNRandom()[0]);
+                System.out.println(Referee.pickNRandom()[1]);
+
+            }
             // enter test code here.
             System.out.println("End tests");
         }
