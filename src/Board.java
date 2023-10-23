@@ -39,11 +39,13 @@ public class Board
                 }
             }
         }
-        for (int i = 0; i < safePaths.length; i ++){
-            for (int j = 0; i < safePaths[i].length; i ++){
-                safePaths[i][j].setSafe(true);
-            }
-        }
+//        for (int i = 0; i < safePaths.length; i ++){
+//            for (int j = 0; i < safePaths[i].length; i ++){
+//                System.out.println(i);
+//                System.out.println(j);
+//                safePaths[i][j].setSafe(true);
+//            }
+//        }
 
         // ------------------------------
 
@@ -61,9 +63,16 @@ public class Board
     {
         String result = "";
         // -------------------------------
-        // TODO: in a loop, keep appending information to "result" so that result winds up being a string that you can print to see the whole board.
-
-
+        // TODO: in a loop, keep appending information to "result" so that result winds up being a string that you can print to see the whole board
+        for (int i  = 0; i < mainLoop.length; i ++){
+            result += (i + "\t" + mainLoop[i].whoIsHere() + " ");
+            if (mainLoop[i].numPieces() == 2){
+                result += (mainLoop[i].whoIsHere() + "\n");
+            }
+            else{
+                result += "\n";
+            }
+        }
         // suggestion: start by just printing the row numbers, a tab, and the squares themselves.
         // then you can get fancy by printing information about the various players' starting positions.
         // then you can get fancy by adding in the safe rows to the goal for the various players.
