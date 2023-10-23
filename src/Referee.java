@@ -16,6 +16,15 @@ public class Referee
         return randomRolls;
 
     }
+    public int[] askForMovements(){
+        let firstMove;
+        if (Referee.pickNRandom()[1] == 5);
+        {
+            firstMove == "5";
+        }
+
+    }
+
 
     public void playGame()
     {
