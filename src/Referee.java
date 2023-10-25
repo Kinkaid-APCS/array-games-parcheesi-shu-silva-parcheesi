@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 public class Referee
 {
     private Board myBoard;
@@ -16,18 +17,24 @@ public class Referee
         return randomRolls;
 
     }
-    public int[] askForMovements(){
-        let firstMove;
-        if (Referee.pickNRandom()[1] == 5);
-        {
-            firstMove == "5";
+    public void askForMovements(int[] rolls){
+        if (rolls[0] == 5){
+            Scanner myScanner = new Scanner(System.in);
+            System.out.println("Do you want to leave home?" );
+            String playerDecision = myScanner.nextLine();
+            System.out.println("Player decisions: " + playerDecision);
+            if (playerDecision == "yes"){
+
+            }
+
         }
+
+
 
     }
 
-
     public void playGame()
     {
-        ;
+        askForMovements(pickNRandom());
     }
 }
