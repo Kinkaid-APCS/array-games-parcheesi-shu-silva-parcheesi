@@ -12,6 +12,20 @@ public class Space
     private int numPieces; // how many pieces, {0, 1, or 2} are on this space
     private boolean isSafe; // whether this is a safety space.
 
+    public int getWhoIsHere(){
+        return whoIsHere;
+    }
+    public int getNumPieces(){
+        return numPieces;
+    }
+    public boolean getIsSafe(){
+        return isSafe;
+    }
+
+    public void setWhoIsHere(int amount){
+        whoIsHere = amount;
+    }
+
     public Space()
     {
         whoIsHere = 0;

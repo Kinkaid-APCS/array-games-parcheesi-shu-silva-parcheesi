@@ -51,12 +51,12 @@ public class Board
     }
 
     public void movePlaces(int startPos, int endPos){
-        mainLoop[startPos].setWhoIsHere(mainLoop[startPos].whoIsHere()-1);
-        mainLoop[endPos].setWhoIsHere(mainLoop[endPos].whoIsHere()+1);
+        mainLoop[startPos].setWhoIsHere(mainLoop[startPos].getWhoIsHere()-1);
+        mainLoop[endPos].setWhoIsHere(mainLoop[endPos].getWhoIsHere()+1);
     }
 
     public boolean checkSafePath(int position){
-        if(mainLoop[position].isSafe() || mainLoop[position].numPieces() == 2){
+        if(mainLoop[position].isSafe() || mainLoop[position].getNumPieces() == 2){
             return false;
         }
         else{
