@@ -10,9 +10,9 @@ public class ParchessiRunner
         if (testingMode)
         {
             System.out.println("Start tests");
-            for (int i  = 0; i < 50; i ++) {
-                System.out.println(ref.pickNRandom()[0]);
-            }
+//            for (int i  = 0; i < 50; i ++) {
+//                System.out.println(ref.pickNRandom()[0]);
+//            }
             System.out.println(ref.getMyBoard());
             // enter test code here.
             System.out.println("End tests");
