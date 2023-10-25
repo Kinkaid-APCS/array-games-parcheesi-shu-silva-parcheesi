@@ -33,14 +33,15 @@ public class Board
         // TODO: initialize all these spaces in both the main loop and the safe paths. Make sure you set the appropriate squares to safe!
         for (int i = 0; i < mainLoop.length; i ++){
             mainLoop[i] = new Space();
-            for (int j = 0; i < safeSpaces.length; i ++){
+            for (int j = 0; j < safeSpaces.length; j ++){
                 if (safeSpaces[j] == i){
                     mainLoop[i].setSafe(true);
                 }
             }
         }
         for (int i = 0; i < safePaths.length; i ++){
-            for (int j = 0; i < safePaths[i].length; i ++){
+            for (int j = 0; j < safePaths[i].length; j ++){
+                safePaths[i][j] = new Space();
                 safePaths[i][j].setSafe(true);
             }
         }
@@ -59,11 +60,24 @@ public class Board
 
     public String toString()
     {
+//        for (int i = 0; i < mainLoop.length; i++){
+//            System.out.print(i);
+//            System.out.println(mainLoop[i]);
+//        }
         String result = "";
+        int path = 0;
         // -------------------------------
-        // TODO: in a loop, keep appending information to "result" so that result winds up being a string that you can print to see the whole board.
-
-
+        // TODO: in a loop, keep appending information to "result" so that result winds up being a string that you can print to see the whole board
+        for (int i = 0; i < mainLoop.length; i ++){
+            result += mainLoop[i];
+            if (i%17 == 12){
+                for (int j = 0; j < safePaths[path].length; j++){
+                    result += safePaths[path][j];
+                }
+                path ++;
+            }
+            result += "\n";
+        }
         // suggestion: start by just printing the row numbers, a tab, and the squares themselves.
         // then you can get fancy by printing information about the various players' starting positions.
         // then you can get fancy by adding in the safe rows to the goal for the various players.
