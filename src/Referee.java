@@ -24,7 +24,6 @@ public class Referee
             String playerDecision = myScanner.nextLine();
             System.out.println("Player decisions: " + playerDecision);
             if (playerDecision == "yes"){
-
             }
 
         }
