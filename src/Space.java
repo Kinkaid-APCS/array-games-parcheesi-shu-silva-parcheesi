@@ -18,12 +18,12 @@ public class Space
     public int getNumPieces(){
         return numPieces;
     }
-    public boolean getIsSafe(){
-        return isSafe;
-    }
 
     public void setWhoIsHere(int amount){
         whoIsHere = amount;
+    }
+    public void setNumPieces(int amount){
+        numPieces = amount;
     }
 
     public Space()

@@ -50,18 +50,32 @@ public class Board
 
     }
 
-    public void movePlaces(int startPos, int endPos){
-        mainLoop[startPos].setWhoIsHere(mainLoop[startPos].getWhoIsHere()-1);
-        mainLoop[endPos].setWhoIsHere(mainLoop[endPos].getWhoIsHere()+1);
+    public void movePlaces(int startPos, int endPos, int player){
+        if (mainLoop[endPos].getWhoIsHere()!= mainLoop[startPos].getWhoIsHere() && mainLoop[endPos].getNumPieces() >= 1){
+            movePlaces(endPos, -10, mainLoop[endPos].getWhoIsHere());
+        }
+        if (endPos < 0){
+            // the moves run in safe paths
+        }
+        if (startPos == 10){
+            // the start position is the starting area
+        }
+        if (endPos == 10){
+            // the end position is the starting area
+            // this occurs when a piece is knocked off of a square
+        }
+        mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces()-1);
+        mainLoop[endPos].setNumPieces(mainLoop[endPos].getNumPieces()+1);
+        mainLoop[endPos].setWhoIsHere(player);
+
     }
 
-    public boolean checkSafePath(int position){
-        if(mainLoop[position].isSafe() || mainLoop[position].getNumPieces() == 2){
+    public boolean checkSafePath(int startPos, int endPos, int player){
+        if((mainLoop[endPos].isSafe() && mainLoop[endPos].getNumPieces() >= 1 && mainLoop[endPos].getWhoIsHere() != player)
+                || mainLoop[endPos].getNumPieces() == 2 || mainLoop[startPos].getNumPieces() == 0){
             return false;
         }
-        else{
-            return true;
-        }
+        return true;
     }
 
     public String toString()
