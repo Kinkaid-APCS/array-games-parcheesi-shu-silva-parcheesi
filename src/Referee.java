@@ -20,7 +20,7 @@ public class Referee {
 
     }
 
-    public void askForMovements(int[] rolls) {
+    public void askForMovements(int[] rolls, int player) {
         System.out.println(rolls[0] + ", " + rolls[1]);
         if (rolls[0] == 5) {
             Scanner myScanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Referee {
             String playerDecision = myScanner.nextLine();
             System.out.println("Player decisions: " + playerDecision);
             if (playerDecision.equals("yes")) {
-                myBoard.checkSafePath(5);
+                myBoard.checkSafePath(-10,17*player,player);
                 // move one player from home to board
             }
             if (rolls[0] == rolls[1]) {
@@ -36,18 +36,17 @@ public class Referee {
                 playerDecision = myScanner.nextLine();
                 System.out.println("Player decisions: " + playerDecision);
                 if (playerDecision.equals("yes")) {
-                    myBoard.checkSafePath(5);
+                    myBoard.checkSafePath(-10, 17*player, player);
                     // move one player from home to board
-
                 }
             }
         }
     }
 
-
     public void playGame() {
-        askForMovements(pickNRandom());
-
+        for (int playerNumb = 0; playerNumb<=3; playerNumb++){
+            askForMovements(pickNRandom(), playerNumb);
+        }
     }
 }
 
