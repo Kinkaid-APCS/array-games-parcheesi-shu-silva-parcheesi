@@ -54,19 +54,28 @@ public class Board
         if (mainLoop[endPos].getWhoIsHere()!= mainLoop[startPos].getWhoIsHere() && mainLoop[endPos].getNumPieces() >= 1){
             movePlaces(endPos, -10, mainLoop[endPos].getWhoIsHere());
         }
-        if (endPos < 0){
+        if (startPos == -10){
+            mainLoop[endPos].setNumPieces(mainLoop[endPos].getNumPieces()+1);
+            mainLoop[endPos].setWhoIsHere(player);
+        }
+        else if (endPos < 0){
             // the moves run in safe paths
+            //ending position is safePaths[player][endPos*-1]
+            if (startPos < 0){
+                safePaths[player][startPos * -1].setNumPieces(safePaths[player][startPos * -1].getNumPieces()+1);
+            }
+            else{
+                mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces()-1);
+            }
         }
-        if (startPos == 10){
-            // the start position is the starting area
+        else if (endPos == -10){
+            mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces()-1);
         }
-        if (endPos == 10){
-            // the end position is the starting area
-            // this occurs when a piece is knocked off of a square
+        else {
+            mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces() - 1);
+            mainLoop[endPos].setNumPieces(mainLoop[endPos].getNumPieces() + 1);
+            mainLoop[endPos].setWhoIsHere(player);
         }
-        mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces()-1);
-        mainLoop[endPos].setNumPieces(mainLoop[endPos].getNumPieces()+1);
-        mainLoop[endPos].setWhoIsHere(player);
 
     }
 
