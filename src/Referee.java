@@ -22,24 +22,31 @@ public class Referee {
 
     public void askForMovements(int[] rolls, int player) {
         System.out.println(rolls[0] + ", " + rolls[1]);
+        Scanner myScanner = new Scanner(System.in);
         if (rolls[0] == 5) {
-            Scanner myScanner = new Scanner(System.in);
             System.out.println("Do you want to leave home?");
             String playerDecision = myScanner.nextLine();
             System.out.println("Player decisions: " + playerDecision);
             if (playerDecision.equals("yes")) {
-                myBoard.checkSafePath(-10,17*player,player);
+                myBoard.checkSafePath(-10, 17 * player, player);
                 // move one player from home to board
             }
-            if (rolls[0] == rolls[1]) {
-                System.out.println("Do you want to leave home with your other 5?");
-                playerDecision = myScanner.nextLine();
-                System.out.println("Player decisions: " + playerDecision);
-                if (playerDecision.equals("yes")) {
-                    myBoard.checkSafePath(-10, 17*player, player);
-                    // move one player from home to board
-                }
+        }
+        if (rolls[0] == rolls[1]) {
+            System.out.println("Do you want to leave home with your other 5?");
+            String playerDecision = myScanner.nextLine();
+            System.out.println("Player decisions: " + playerDecision);
+            if (playerDecision.equals("yes")) {
+                myBoard.checkSafePath(-10, 17*player, player);
+                // move one player from home to board
             }
+        }
+        //if they want to move the piece
+        //give starting position and how far it moves
+        //call movePlaces from Board
+        if (rolls[0] != 5) {
+
+
         }
     }
 
