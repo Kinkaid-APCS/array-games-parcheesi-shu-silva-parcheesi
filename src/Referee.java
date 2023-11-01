@@ -35,6 +35,8 @@ public class Referee {
                 // move one player from home to board
                 roll1IsUsed = true;
                 myBoard.movePlaces(-10,17 * player, player);
+                System.out.println(myBoard);
+                myBoard.setPlayersInStartingArea(player, myBoard.getPlayersInStartingArea(player)-1);
             }
         }
         if (rolls[1] == 5) {
@@ -43,27 +45,33 @@ public class Referee {
             System.out.println("Player decisions: " + playerDecision);
             if (playerDecision.equals("yes")) {
                 myBoard.checkSafePath(-10, 17*player, player);
+                System.out.println(myBoard);
                 // move one player from home to board
                 roll2IsUsed = true;
                 myBoard.movePlaces(-10,17 * player, player);
+                myBoard.setPlayersInStartingArea(player, myBoard.getPlayersInStartingArea(player)-1);
             }
         }
-        while (!roll1IsUsed || !roll2IsUsed) {
+        while ((!roll1IsUsed || !roll2IsUsed) && myBoard.getPlayersInStartingArea(player)+myBoard.getPLayersInHome(player) != 4) {
             System.out.println("Where is the piece that you want to move?");
             int playerDecisionTwo = myScanner.nextInt();
             System.out.println("Player decision: " + playerDecisionTwo);
             int startPosition = playerDecisionTwo;
             System.out.println("How far do you want to go? A = 1st roll ; B = 2nd roll ; C = combined rolls");
+            myScanner.nextLine();
             String playerDecisionThree = myScanner.nextLine();
             System.out.println("Player decision: " + playerDecisionThree);
             if (playerDecisionThree.equals("A") && !roll1IsUsed) {
                 myBoard.movePlaces(startPosition,rolls[0] + startPosition, player);
+                myBoard.setPlayersInStartingArea(player, myBoard.getPlayersInStartingArea(player)-1);
             }
-            if (playerDecisionThree.equals("B") && !roll2IsUsed) {
+            else if (playerDecisionThree.equals("B") && !roll2IsUsed) {
                 myBoard.movePlaces(startPosition,rolls[1] + startPosition, player);
+                myBoard.setPlayersInStartingArea(player, myBoard.getPlayersInStartingArea(player)-1);
             }
-            if (playerDecisionThree.equals("C") && !roll1IsUsed && !roll2IsUsed) {
+            else if (playerDecisionThree.equals("C") && !roll1IsUsed && !roll2IsUsed) {
                 myBoard.movePlaces(startPosition,rolls[0] + rolls[1] + startPosition, player);
+                myBoard.setPlayersInStartingArea(player, myBoard.getPlayersInStartingArea(player)-1);
             }
         }
 

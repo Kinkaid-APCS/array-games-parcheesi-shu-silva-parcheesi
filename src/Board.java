@@ -50,19 +50,33 @@ public class Board
 
     }
 
+    public int getPlayersInStartingArea(int player){
+        return numChipsInStartingPointsPerPlayer[player];
+    }
+    public void setPlayersInStartingArea(int player, int amount){
+        numChipsInStartingPointsPerPlayer[player] = amount;
+    }
+    public int getPLayersInHome(int player){
+        return numChipsInHomePerPlayer[player];
+    }
+
     public void movePlaces(int startPos, int endPos, int player){
-        if (mainLoop[endPos].getWhoIsHere()!= mainLoop[startPos].getWhoIsHere() && mainLoop[endPos].getNumPieces() >= 1){
-            movePlaces(endPos, -10, mainLoop[endPos].getWhoIsHere());
-        }
         if (startPos == -10){
             mainLoop[endPos].setNumPieces(mainLoop[endPos].getNumPieces()+1);
             mainLoop[endPos].setWhoIsHere(player);
         }
+        else if ((mainLoop[endPos].getWhoIsHere()!= mainLoop[startPos].getWhoIsHere() && mainLoop[endPos].getNumPieces() >= 1)){
+            movePlaces(endPos, -10, mainLoop[endPos].getWhoIsHere());
+        }
         else if (endPos < 0){
-            // the moves run in safe paths
-            //ending position is safePaths[player][endPos*-1]
-            if (startPos < 0){
-                safePaths[player][startPos * -1].setNumPieces(safePaths[player][startPos * -1].getNumPieces()+1);
+            if (endPos == -7){
+                numChipsInHomePerPlayer[player] += 1;
+                if(numChipsInHomePerPlayer[player] == 4){
+//                    Referee.endGame(player);
+                }
+            }
+            if (startPos < 0) {
+                safePaths[player][startPos * -1].setNumPieces(safePaths[player][startPos * -1].getNumPieces() + 1);
             }
             else{
                 mainLoop[startPos].setNumPieces(mainLoop[startPos].getNumPieces()-1);
@@ -80,6 +94,13 @@ public class Board
     }
 
     public boolean checkSafePath(int startPos, int endPos, int player){
+        if (startPos == -10){
+            if((mainLoop[endPos].isSafe() && mainLoop[endPos].getNumPieces() >= 1 && mainLoop[endPos].getWhoIsHere() != player)
+                    || mainLoop[endPos].getNumPieces() == 2){
+                return false;
+            }
+            return true;
+        }
         if((mainLoop[endPos].isSafe() && mainLoop[endPos].getNumPieces() >= 1 && mainLoop[endPos].getWhoIsHere() != player)
                 || mainLoop[endPos].getNumPieces() == 2 || mainLoop[startPos].getNumPieces() == 0){
             return false;
