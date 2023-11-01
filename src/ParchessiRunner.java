@@ -6,7 +6,7 @@ public class ParchessiRunner
     public static void main(String[] args)
     {
         Referee ref = new Referee();
-        boolean testingMode = true;
+        boolean testingMode = false;
         if (testingMode)
         {
             System.out.println("Start tests");
