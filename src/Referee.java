@@ -86,4 +86,3 @@ public class Referee {
         winner = true;
     }
 }
-
